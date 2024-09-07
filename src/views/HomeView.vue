@@ -1,8 +1,26 @@
-<script setup>
-import TheWelcome from '../components/TheWelcome.vue'
+<script setup>;
+
+import Header from '../components/header.vue'
+import { check_token } from '@/modules/auth';
+import { onBeforeMount } from 'vue';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+
+onBeforeMount(()=>{
+    // Вызываем проверку токена при первом монтировании 
+    if (router.currentRoute.value.path !== '/login' && router.currentRoute.value.path !== '/register') {
+      check_token();
+    }
+})
+
+
 </script>
 
 <template>
+
+  <Header />
+
   <div class="container mt-5">
     <h1 class="text-center mb-4">Конференции</h1>
 
@@ -20,7 +38,8 @@ import TheWelcome from '../components/TheWelcome.vue'
                 <label for="conferencePassword">Пароль (необязательно)</label>
                 <input type="password" class="form-control" id="conferencePassword" placeholder="Введите пароль">
               </div>
-              <button type="submit" class="btn btn-primary mt-3">Создать</button>
+              <RouterLink type="submit" class="btn btn-primary mt-3" to="/conference">Создать</RouterLink>
+              <!-- <button type="submit" class="btn btn-primary mt-3">Создать</button> -->
             </form>
           </div>
         </div>

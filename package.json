@@ -9,7 +9,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@types/sdp-transform": "2.4.6",
+    "axios": "^1.7.2",
+    "sdp-transform": "^2.14.1",
     "vue": "^3.4.29",
+    "vue-axios": "^3.5.2",
     "vue-router": "^4.3.3"
   },
   "devDependencies": {
